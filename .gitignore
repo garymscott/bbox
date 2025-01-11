@@ -1,1 +1,55 @@
-IyBQeXRob24KX19weWNhY2hlX18vCioucHlbY29kXQoqJHB5LmNsYXNzCiouc28KLlB5dGhvbgpidWlsZC8KZGV2ZWxvcC1lZ2dzLwpkaXN0Lwpkb3dubG9hZHMvCmVnZ3MvCi5lZ2dzLwpsaWIvCmxpYjY0LwpwYXJ0cy8Kc2Rpc3QvCnZhci8Kd2hlZWxzLwoqLmVnZy1pbmZvLwouaW5zdGFsbGVkLmNmZwoqLmVnZwoKIyBWaXJ0dWFsIEVudmlyb25tZW50CnZlbnYvCmVudi8KRU5WLwoKIyBJREUKLmlkZWEvCi52c2NvZGUvCiouc3dwCiouc3dvCgojIExvZ3MKKi5sb2cKCiMgTG9jYWwgY29uZmlndXJhdGlvbgpjb25maWcvY29uZmlnLnlhbWwKCiMgRG9ja2VyCi5kb2NrZXIvCgojIENlbGVyeQpjZWxlcnliZWF0LXNjaGVkdWxlCmNlbGVyeWJlYXQucGlkCgojIFRlc3RpbmcKLnB5dGVzdF9jYWNoZS8KLmNvdmVyYWdlCmh0bWxjb3YvCgojIEdlbmVyYXRlZCBmaWxlcwphcHAvZ2VuZXJhdGVkX2NvZGUucHkKYXBwL3Rlc3RfZ2VuZXJhdGVkX2NvZGUucHkKYXBwL3JlcXVpcmVtZW50cy50eHQ=
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Local configuration
+config/config.yaml
+
+# Docker
+.docker/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Generated files
+app/generated_code.py
+app/test_generated_code.py
+app/requirements.txt
