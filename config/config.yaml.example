@@ -1,0 +1,29 @@
+ai_providers:
+  openai:
+    api_key: "your-api-key-here"
+    model: "gpt-4"
+    max_tokens: 2000
+    temperature: 0.7
+
+  gemini:
+    api_key: "your-gemini-key-here"
+    # Add Gemini-specific settings
+
+prompts:
+  review_code:
+    description: "Review the following Python code for readability, efficiency, and adherence to best practices."
+    sample_structure:
+      feedback:
+        - problem: "<description of the problem>"
+          line: "<line number>"
+          suggestion: "<clear and actionable improvement suggestion>"
+      message: "<Overall summary of the review.>"
+    instructions: "If the code adheres to best practices and no improvements are needed, respond with: { \"feedback\": [], \"message\": \"No improvements needed.\" }"
+
+  generate_code:
+    description: "Generate Python code for the following request:"
+    instructions: "Ensure the code is efficient, readable, and adheres to Python best practices. Only return the code, without any comments or explanations, and wrap it in triple backticks."
+
+  generate_tests:
+    description: "Generate test cases for the following Python function:"
+    instructions: "Provide a set of test cases that cover different scenarios and edge cases. Only return the code, without any comments or explanations, and wrap it in triple backticks. Ensure the tests import the function from 'generated_code' and use unittest."
