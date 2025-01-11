@@ -28,3 +28,15 @@ celery_app.conf.update(
     timezone='UTC',
     enable_utc=True,
 )
+
+# Create Celery tasks
+celery_tasks = create_celery_tasks(celery_app)
+
+def load_config():
+    """Load configuration from YAML file."""
+    config_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config', 'config.yaml')
+    if not os.path.exists(config_path):
+        raise FileNotFoundError(f"Configuration file not found at {config_path}")
+        
+    with open(config_path, 'r') as f:
+        return yaml.safe_load(f)
