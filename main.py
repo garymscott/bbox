@@ -40,3 +40,55 @@ def load_config():
         
     with open(config_path, 'r') as f:
         return yaml.safe_load(f)
+
+async def main():
+    try:
+        # Load configuration
+        config = load_config()
+        
+        # Initialize task manager
+        task_manager = TaskManager(celery_app)
+        
+        # Initialize AI provider
+        ai_provider = OpenAIProvider(
+            api_key=config['ai_providers']['openai']['api_key'],
+            model=config['ai_providers']['openai'].get('model', 'gpt-4')
+        )
+        
+        # Initialize agents
+        agents = {
+            "builder": CodeBuilder(ai_provider, config['prompts']),
+            "reviewer": CodeReviewer(ai_provider, config['prompts']),
+            "tester": CodeTester(ai_provider, config['prompts'])
+        }
+        
+        # Initialize pipeline
+        pipeline = CodeGenerationPipeline(task_manager, agents)
+        
+        # Get user input
+        user_request = input("Enter your coding request: ")
+        
+        # Execute pipeline
+        result = await pipeline.execute({"user_request": user_request})
+        
+        # Handle result
+        if result["status"] == "success":
+            print("\nGenerated Code:")
+            print(result["code"])
+            print("\nTests:")
+            print(result["tests"])
+            print("\nCode Review:")
+            print(result["review"])
+        else:
+            print(f"\nError: {result['message']}")
+            if 'code' in result:
+                print("\nPartial Code:")
+                print(result["code"])
+                
+    except Exception as e:
+        logging.error(f"Application error: {e}")
+        print(f"An error occurred: {e}")
+
+if __name__ == "__main__":
+    import asyncio
+    asyncio.run(main())
